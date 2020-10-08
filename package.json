@@ -1,0 +1,25 @@
+{
+  "name": "toy-robot",
+  "version": "1.0.0",
+  "description": "Toy robot simulator - challenge",
+  "engines": {
+    "node": "12.x"
+  },
+  "scripts": {
+    "start": "node backend",
+    "build": "cd frontend && npm install && npm run build"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "react-ui/node_modules"
+  ],
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "guilhermehkr",
+  "license": "MIT"
+}
