@@ -1,6 +1,6 @@
 {
   "name": "toy-robot",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Toy robot simulator - challenge",
   "engines": {
     "node": "12.x"
@@ -10,10 +10,10 @@
     "start:backend": "npm run backend:lint && ts-node-dev ./backend/src/index.ts",
     "start:frontend": "cd frontend && npm run start",
     "prebuild": "npm run backend:lint",
+    "backend:lint": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "npm run build:frontend && npm run build:backend",
     "build:backend": "rm -Rf ./build && tsc",
-    "build:frontend": "cd frontend && npm install && npm run build",
-    "backend:lint": "tslint -c tslint.json -p tsconfig.json --fix"
+    "build:frontend": "cd frontend && npm install && npm run build"
   },
   "cacheDirectories": [
     "node_modules",
