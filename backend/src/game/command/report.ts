@@ -11,7 +11,7 @@ export class Report implements Command {
 
         return {
             ...values,
-            output: Object.values(coordinate).join(',')
+            output: `${coordinate.column},${coordinate.row},${coordinate.currentDirection}`
         };
     }
 }

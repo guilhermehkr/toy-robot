@@ -3,7 +3,13 @@ import { getCommandImpl } from './command/command-factory';
 import { defaultCoordinate } from './coordinate';
 import { Values } from './command';
 
-export const play = (rawCommands: string): string | undefined => {
+export const NO_COMMANDS_FOUND_MSG = 'No commands were provided';
+
+export const play = (rawCommands: string): string => {
+
+    if (!rawCommands) {
+        return NO_COMMANDS_FOUND_MSG;
+    }
 
     const commandParser = new CommandParser();
 
@@ -24,5 +30,5 @@ export const play = (rawCommands: string): string | undefined => {
             result = command.execute(values);
         });
 
-    return result.output;
+    return result.output as string;
 };

@@ -1,4 +1,4 @@
-import { play } from '../../src/game/robot';
+import { play, NO_COMMANDS_FOUND_MSG } from '../../src/game/robot';
 import { Commands, ParsedCommand } from '../../src/game/command';
 import { getCommandImpl } from '../../src/game/command/command-factory';
 
@@ -67,6 +67,14 @@ const mockReport = {
 
 describe('robot', () => {
     describe('play', () => {
+
+        test('should return error message when no commands are provided', () => {
+            [null, undefined, ''].forEach(commands => {
+                const result = play(commands as string);
+                expect(result).toEqual(NO_COMMANDS_FOUND_MSG);
+            })
+        });
+
         test('should parse and run all commands', () => {
 
             const rawCommands = 'rawCommands';
