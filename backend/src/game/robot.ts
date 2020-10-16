@@ -1,7 +1,7 @@
 import CommandParser from './command/command-parser';
 import { getCommandImpl } from './command/command-factory';
 import { defaultCoordinate } from './coordinate';
-import { Values } from './command';
+import { State } from './command';
 
 export const NO_COMMANDS_FOUND_MSG = 'No commands were provided';
 
@@ -13,7 +13,7 @@ export const play = (rawCommands: string): string => {
 
     const commandParser = new CommandParser();
 
-    let result: Values = {
+    let state: State = {
         coordinate: defaultCoordinate
     };
 
@@ -21,14 +21,14 @@ export const play = (rawCommands: string): string => {
         .parse(rawCommands)
         .forEach(parsedCommand => {
             const command = getCommandImpl(parsedCommand.command);
-            const mergedCoordinate = Object.assign({}, result.coordinate, parsedCommand.coordinate);
-            const values = {
-                ...result,
+            const mergedCoordinate = Object.assign({}, state.coordinate, parsedCommand.coordinate);
+            const updatedState = {
+                ...state,
                 coordinate: mergedCoordinate
             };
 
-            result = command.execute(values);
+            state = command.execute(updatedState);
         });
 
-    return result.output as string;
+    return state.output as string;
 };

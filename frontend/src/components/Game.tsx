@@ -15,7 +15,7 @@ export default class Game extends React.Component<{}, State> {
 
     componentDidMount() {
         this.loadExample()
-            .then(example => this.setState({ commands: example}));
+            .then(example => this.setState({ commands: example }));
     }
 
     loadExample = () => {
@@ -52,7 +52,7 @@ export default class Game extends React.Component<{}, State> {
                     </div>
                 </BoxContainer>
                 <div className="row">
-                    <button onClick={this.playGame}>Play game</button>
+                    <button onClick={this.playGame}>Run</button>
                 </div>
             </div>
         );

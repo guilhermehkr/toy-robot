@@ -1,16 +1,16 @@
-import { Command, Values } from './command';
+import { Command, State } from './command';
 
 export class Report implements Command {
 
-    execute(values: Values): Values {
+    execute(state: State): State {
 
-        const { isRobotOnTable, coordinate } = values;
+        const { isRobotOnTable, coordinate } = state;
         if (!isRobotOnTable) {
-            return values;
+            return state;
         }
 
         return {
-            ...values,
+            ...state,
             output: `${coordinate.column},${coordinate.row},${coordinate.currentDirection}`
         };
     }

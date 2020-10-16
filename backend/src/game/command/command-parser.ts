@@ -1,4 +1,4 @@
-import { Commands, ParsedCommand } from './command';
+import { CommandEnum, ParsedCommand } from './command';
 import { DirectionType } from '../direction';
 import { isCoordinateWithinBoundaries } from '../board';
 
@@ -12,7 +12,7 @@ const ROW_INDEX = 2;
 const DIRECTION_INDEX = 3;
 
 const INVALID_PARSED_COMMAND: ParsedCommand = {
-    command: Commands.INVALID
+    command: CommandEnum.INVALID
 };
 
 export default class CommandParser {
@@ -54,7 +54,7 @@ export default class CommandParser {
         }
 
         return {
-            command: Commands.PLACE,
+            command: CommandEnum.PLACE,
             coordinate: {
                 column,
                 row,
@@ -66,7 +66,7 @@ export default class CommandParser {
     private handleOtherCommands(rawCommand: string): ParsedCommand {
         const match = this.executeCommandRegex(rawCommand) || [];
         return {
-            command: match[COMMAND_INDEX] as Commands
+            command: match[COMMAND_INDEX] as CommandEnum
         }
     }
 

@@ -1,8 +1,8 @@
-import { Command, Values } from './command';
+import { Command, State } from './command';
 
 export class Invalid implements Command {
 
-    execute(values: Values): Values {
-        return values;
+    execute(state: State): State {
+        return state;
     }
 }

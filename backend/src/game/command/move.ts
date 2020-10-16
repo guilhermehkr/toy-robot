@@ -1,18 +1,18 @@
 import { EAST, NORTH, SOUTH, WEST } from '../direction';
 import { isNotFirstColumn, isNotFirstRow, isNotLastColumn, isNotLastRow } from '../board';
-import { Command, Values } from './command';
+import { Command, State } from './command';
 
 export class Move implements Command {
 
-    public execute(values: Values): Values {
+    public execute(state: State): State {
 
-        if (!values.isRobotOnTable) {
-            return values;
+        if (!state.isRobotOnTable) {
+            return state;
         }
 
-        let { column, row } = values.coordinate;
+        let { column, row } = state.coordinate;
 
-        switch (values.coordinate.currentDirection) {
+        switch (state.coordinate.currentDirection) {
             case NORTH:
                 if (isNotLastRow(row)) row ++;
                 break;
@@ -29,9 +29,9 @@ export class Move implements Command {
         }
 
         return {
-            ...values,
+            ...state,
             coordinate: {
-                currentDirection: values.coordinate.currentDirection,
+                currentDirection: state.coordinate.currentDirection,
                 column,
                 row
             }

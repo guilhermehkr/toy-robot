@@ -4,9 +4,9 @@ import Game from '../Game';
 
 describe('<Game />', () => {
 
-  test('should render Play game button', () => {
+  test('should render Run button', () => {
     const { getByText,  } = render(<Game />);
-    const button = getByText(/Play game/i);
+    const button = getByText(/Run/i);
     expect(button).toBeInTheDocument();
   });
 

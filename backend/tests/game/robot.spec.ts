@@ -1,5 +1,5 @@
 import { play, NO_COMMANDS_FOUND_MSG } from '../../src/game/robot';
-import { Commands, ParsedCommand } from '../../src/game/command';
+import { CommandEnum, ParsedCommand } from '../../src/game/command';
 import { getCommandImpl } from '../../src/game/command/command-factory';
 
 jest.mock('../../src/game/command/command-factory', () => ({
@@ -16,16 +16,16 @@ jest.mock('../../src/game/command/command-parser', () => ({
 
 const parsedCommands: ParsedCommand[] = [
     {
-        command: Commands.PLACE,
+        command: CommandEnum.PLACE,
         coordinate: { column: 0, row: 1, currentDirection: 'SOUTH' }
     },
-    { command: Commands.MOVE },
-    { command: Commands.LEFT },
+    { command: CommandEnum.MOVE },
+    { command: CommandEnum.LEFT },
     {
-        command: Commands.PLACE,
+        command: CommandEnum.PLACE,
         coordinate: { column: 2, row: 3, currentDirection: 'EAST' }
     },
-    { command: Commands.REPORT }
+    { command: CommandEnum.REPORT }
 ];
 
 const firstPlaceValues = {
@@ -92,11 +92,11 @@ describe('robot', () => {
             expect(result).toEqual(output);
             expect(mockParse).toHaveBeenCalledWith(rawCommands);
 
-            expect(getCommandImpl).toHaveBeenCalledWith(Commands.PLACE);
-            expect(getCommandImpl).toHaveBeenCalledWith(Commands.MOVE);
-            expect(getCommandImpl).toHaveBeenCalledWith(Commands.LEFT);
-            expect(getCommandImpl).toHaveBeenCalledWith(Commands.PLACE);
-            expect(getCommandImpl).toHaveBeenCalledWith(Commands.REPORT);
+            expect(getCommandImpl).toHaveBeenCalledWith(CommandEnum.PLACE);
+            expect(getCommandImpl).toHaveBeenCalledWith(CommandEnum.MOVE);
+            expect(getCommandImpl).toHaveBeenCalledWith(CommandEnum.LEFT);
+            expect(getCommandImpl).toHaveBeenCalledWith(CommandEnum.PLACE);
+            expect(getCommandImpl).toHaveBeenCalledWith(CommandEnum.REPORT);
 
             expect(mockPlaceExecute).toHaveBeenCalledWith({
                 coordinate: firstPlaceValues.coordinate

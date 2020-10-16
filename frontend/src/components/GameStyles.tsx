@@ -18,6 +18,7 @@ const Box = css`
     text-align: left;
     line-height: 26px;
     border-radius: 4px;
+    resize: none;
 `;
 
 export const BoxContainer = styled.div`

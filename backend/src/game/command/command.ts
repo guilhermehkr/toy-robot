@@ -1,6 +1,6 @@
 import { Coordinate } from '../coordinate';
 
-export enum Commands {
+export enum CommandEnum {
     PLACE = 'PLACE',
     MOVE = 'MOVE',
     LEFT = 'LEFT',
@@ -10,16 +10,16 @@ export enum Commands {
 }
 
 export type ParsedCommand = {
-    command: Commands;
+    command: CommandEnum;
     coordinate?: Coordinate;
 }
 
-export type Values = {
+export type State = {
     coordinate: Coordinate;
     output?: string;
     isRobotOnTable?: boolean;
 }
 
 export interface Command {
-    execute(values: Values): Values;
+    execute(state: State): State;
 }

@@ -1,1 +1,1 @@
-export { Commands, ParsedCommand, Values, Command } from './command'
+export { CommandEnum, ParsedCommand, State, Command } from './command'

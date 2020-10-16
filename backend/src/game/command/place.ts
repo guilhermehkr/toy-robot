@@ -1,15 +1,15 @@
 import { isCoordinateWithinBoundaries } from '../board';
-import { Command, Values } from './command';
+import { Command, State } from './command';
 
 export class Place implements Command {
 
-    public execute(values: Values): Values {
+    public execute(state: State): State {
 
-        const { column, row } = values.coordinate;
+        const { column, row } = state.coordinate;
         const isRobotOnTable = isCoordinateWithinBoundaries(column, row);
 
         return {
-            ...values,
+            ...state,
             isRobotOnTable
         };
     }

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Game from './compoments/Game';
-import { GlobalStyle } from './compoments/GameStyles';
+import Game from './components/Game';
+import { GlobalStyle } from './components/GameStyles';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

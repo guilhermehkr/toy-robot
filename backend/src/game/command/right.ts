@@ -1,19 +1,19 @@
 import { RIGHT, turnFrom } from '../direction';
-import { Command, Values } from './command';
+import { Command, State } from './command';
 
 export class Right implements Command {
 
-    public execute(values: Values): Values {
+    public execute(state: State): State {
 
-        if (!values.isRobotOnTable) {
-            return values;
+        if (!state.isRobotOnTable) {
+            return state;
         }
 
-        const { currentDirection, column, row } = values.coordinate;
+        const { currentDirection, column, row } = state.coordinate;
         const nextDirection = turnFrom(currentDirection, RIGHT);
 
         return {
-            ...values,
+            ...state,
             coordinate: {
                 currentDirection: nextDirection,
                 column,
